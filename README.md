@@ -42,7 +42,7 @@
 
 1. 克隆仓库
 ```bash
-git clone https://github.com/你的用户名/crazy-word-guess.git
+git clone https://github.com/advadvadvad/crazy-word-guess.git
 ```
 
 2. 使用微信开发者工具打开项目
