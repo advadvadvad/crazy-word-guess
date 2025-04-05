@@ -1,0 +1,341 @@
+/* pages/game/game.wxss */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #F8F9FA;
+}
+
+/* 自定义导航栏特殊样式 */
+.game-nav {
+  background-image: linear-gradient(to bottom, rgba(41, 128, 185, 0.95), rgba(52, 152, 219, 0.85));
+}
+
+.pause-icon-nav {
+  width: 24rpx;
+  height: 24rpx;
+  border-left: 8rpx solid white;
+  border-right: 8rpx solid white;
+}
+
+/* 顶部计时器 */
+.timer-section {
+  width: 100%;
+  padding: 30rpx 0;
+  display: flex;
+  justify-content: center;
+}
+
+.timer-container {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-bg {
+  position: absolute;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f0f2f4, #ffffff);
+  box-shadow: 10rpx 10rpx 30rpx rgba(0, 0, 0, 0.1),
+              -10rpx -10rpx 30rpx rgba(255, 255, 255, 1);
+}
+
+.timer {
+  position: relative;
+  z-index: 2;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3498DB, #2980b9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.1),
+              inset -4rpx -4rpx 8rpx rgba(255, 255, 255, 0.1);
+}
+
+.timer-text {
+  font-size: 64rpx;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2rpx 2rpx 6rpx rgba(0, 0, 0, 0.2);
+}
+
+.timer-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 6rpx;
+}
+
+.timer-warning {
+  background: linear-gradient(145deg, #E74C3C, #C0392B);
+  animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 分数 */
+.score-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20rpx 40rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx 30rpx;
+}
+
+.score-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #2C3E50;
+}
+
+.score-label {
+  font-size: 24rpx;
+  color: #7F8C8D;
+  margin-top: 4rpx;
+}
+
+/* 词语区域 */
+.word-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40rpx;
+}
+
+.word-card {
+  width: 85%;
+  background-color: white;
+  border-radius: 24rpx;
+  padding: 60rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12rpx 30rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.current-word {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #2C3E50;
+  text-align: center;
+  min-height: 120rpx;
+  display: flex;
+  align-items: center;
+}
+
+.word-arrows {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  bottom: 20rpx;
+}
+
+.arrow {
+  width: 40rpx;
+  height: 40rpx;
+  opacity: 0.3;
+}
+
+.arrow-left {
+  border-bottom: 6rpx solid #2ECC71;
+  border-left: 6rpx solid #2ECC71;
+  transform: rotate(45deg);
+}
+
+.arrow-right {
+  border-bottom: 6rpx solid #E74C3C;
+  border-right: 6rpx solid #E74C3C;
+  transform: rotate(-45deg);
+}
+
+/* 操作区域 */
+.action-container {
+  display: flex;
+  height: 36vh;
+  overflow: hidden;
+  border-radius: 30rpx 30rpx 0 0;
+  box-shadow: 0 -8rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.correct-area, .skip-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.correct-area {
+  background: linear-gradient(180deg, #2ECC71, #27AE60);
+}
+
+.skip-area {
+  background: linear-gradient(180deg, #E74C3C, #C0392B);
+}
+
+.correct-hover {
+  background: linear-gradient(180deg, #27AE60, #27AE60);
+}
+
+.skip-hover {
+  background: linear-gradient(180deg, #C0392B, #C0392B);
+}
+
+.action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.correct-icon {
+  border-radius: 50%;
+  border: 6rpx solid white;
+  position: relative;
+}
+
+.correct-icon::before, .correct-icon::after {
+  content: '';
+  position: absolute;
+  background-color: white;
+}
+
+.correct-icon::before {
+  width: 16rpx;
+  height: 50rpx;
+  top: 10rpx;
+  left: 48rpx;
+  transform: rotate(45deg);
+}
+
+.correct-icon::after {
+  width: 16rpx;
+  height: 30rpx;
+  top: 30rpx;
+  left: 20rpx;
+  transform: rotate(-45deg);
+}
+
+.skip-icon {
+  position: relative;
+}
+
+.skip-icon::before, .skip-icon::after {
+  content: '';
+  position: absolute;
+  width: 50rpx;
+  height: 6rpx;
+  background-color: white;
+  left: 15rpx;
+  top: 37rpx;
+}
+
+.skip-icon::before {
+  transform: rotate(45deg);
+}
+
+.skip-icon::after {
+  transform: rotate(-45deg);
+}
+
+.action-text {
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 暂停蒙层 */
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pause-card {
+  background-color: white;
+  border-radius: 24rpx;
+  padding: 50rpx 40rpx;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 20rpx 40rpx rgba(0, 0, 0, 0.2);
+}
+
+.pause-stats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 30rpx 0;
+}
+
+.pause-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.pause-stat-value {
+  font-size: 50rpx;
+  font-weight: bold;
+  color: #3498DB;
+}
+
+.pause-stat-label {
+  font-size: 24rpx;
+  color: #7F8C8D;
+  margin-top: 10rpx;
+}
+
+.pause-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container home-container">
+    <!-- 顶部标题区域 -->
+    <view class="logo-container bounce-in">
+      <view class="logo">疯狂猜词</view>
+      <view class="logo-tagline">举起手机，猜词游戏</view>
+    </view>
+    
+    <!-- 设置区域 -->
+    <view class="settings-container slide-up">
+      <!-- 词库选择 -->
+      <view class="setting-card">
+        <view class="setting-header">
+          <text class="setting-title">词库选择</text>
+        </view>
+        <picker bindchange="onCategoryChange" value="{{categoryIndex}}" range="{{categories}}" class="category-picker">
+          <view class="picker-content">
+            <text class="picker-label">当前词库</text>
+            <view class="picker-value">
+              <text>{{categories[categoryIndex]}}</text>
+              <text class="picker-arrow">▼</text>
+            </view>
+          </view>
+        </picker>
+      </view>
+      
+      <!-- 游戏设置 -->
+      <view class="setting-card">
+        <view class="setting-header">
+          <text class="setting-title">游戏设置</text>
+        </view>
+        <view class="setting-item">
+          <text class="setting-label">游戏时长</text>
+          <view class="time-selector">
+            <view class="time-option {{gameTime === 30 ? 'time-selected' : ''}}" bindtap="setGameTime" data-time="30">30秒</view>
+            <view class="time-option {{gameTime === 60 ? 'time-selected' : ''}}" bindtap="setGameTime" data-time="60">60秒</view>
+            <view class="time-option {{gameTime === 90 ? 'time-selected' : ''}}" bindtap="setGameTime" data-time="90">90秒</view>
+            <view class="time-option {{gameTime === 120 ? 'time-selected' : ''}}" bindtap="setGameTime" data-time="120">120秒</view>
+          </view>
+        </view>
+        <view class="setting-item">
+          <text class="setting-label">游戏音效</text>
+          <switch checked="{{soundEnabled}}" bindchange="onSoundChange" color="#3498DB"/>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 操作按钮区域 -->
+    <view class="action-buttons fade-in">
+      <view class="btn btn-primary" hover-class="btn-hover" bindtap="startGame">开始游戏</view>
+      <view class="btn" hover-class="btn-hover" bindtap="showRules">游戏规则</view>
+      <view class="btn" hover-class="btn-hover" bindtap="showRank">排行榜</view>
+    </view>
+    
+    <!-- 底部装饰元素 -->
+    <view class="decoration-bottom">
+      <view class="decoration-item"></view>
+      <view class="decoration-item"></view>
+      <view class="decoration-item"></view>
+    </view>
+  </view>
+</scroll-view>

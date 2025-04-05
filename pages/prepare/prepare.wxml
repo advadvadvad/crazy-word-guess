@@ -1,0 +1,68 @@
+<!--prepare.wxml-->
+<!-- 自定义导航栏 -->
+<view class="custom-nav">
+  <view class="nav-back" bindtap="goBack">
+    <view class="back-icon"></view>
+  </view>
+  <view class="nav-title">准备开始</view>
+</view>
+
+<view class="container prepare-container with-custom-nav">
+  <view class="instruction-card bounce-in">
+    <view class="title">游戏准备</view>
+    <view class="instruction-text">请将手机举到额头位置，确保其他玩家能看到屏幕上的词语</view>
+    
+    <view class="phone-position">
+      <!-- 手机示意图 -->
+      <view class="phone-illustration">
+        <view class="phone-outline">
+          <view class="phone-screen">
+            <view class="screen-word">词语</view>
+          </view>
+        </view>
+        <view class="head-illustration">
+          <view class="head-circle"></view>
+          <view class="face-elements">
+            <view class="eyes"></view>
+            <view class="smile"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="countdown {{isCountingDown ? 'active' : ''}}" wx:if="{{isCountingDown}}">
+      <view class="count-number">{{countdown}}</view>
+      <view class="count-circles">
+        <view class="count-circle"></view>
+        <view class="count-circle"></view>
+        <view class="count-circle"></view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="btn btn-primary {{!isCountingDown ? 'pulse-animation' : ''}}" hover-class="btn-hover" bindtap="startCountdown" wx:if="{{!isCountingDown}}">准备好了，开始！</view>
+  
+  <view class="game-settings slide-up">
+    <view class="setting-item">
+      <text class="setting-label">词库</text>
+      <text class="setting-value">{{gameSettings.category}}</text>
+    </view>
+    <view class="setting-item">
+      <text class="setting-label">时长</text>
+      <text class="setting-value">{{gameSettings.gameTime}}秒</text>
+    </view>
+    <view class="setting-item">
+      <text class="setting-label">音效</text>
+      <view class="setting-value {{gameSettings.soundEnabled ? 'status-on' : 'status-off'}}">
+        {{gameSettings.soundEnabled ? '开启' : '关闭'}}
+      </view>
+    </view>
+  </view>
+  
+  <view class="ready-tips fade-in" wx:if="{{!isCountingDown}}">
+    <text>游戏小贴士</text>
+    <text>1. 保持手机稳定在额头位置</text>
+    <text>2. 当猜对词语时，点击绿色区域</text>
+    <text>3. 如果想跳过，点击红色区域</text>
+  </view>
+</view> 

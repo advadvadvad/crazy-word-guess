@@ -1,0 +1,84 @@
+<!--game.wxml-->
+<!-- 自定义导航栏 -->
+<view class="custom-nav game-nav">
+  <view class="nav-back" bindtap="togglePause">
+    <view class="pause-icon-nav"></view>
+  </view>
+  <view class="nav-title">游戏中</view>
+</view>
+
+<view class="game-container with-custom-nav">
+  <!-- 倒计时 -->
+  <view class="timer-section">
+    <view class="timer-container">
+      <view class="timer-bg"></view>
+      <view class="timer {{remainingTime <= 10 ? 'timer-warning' : ''}}">
+        <text class="timer-text">{{remainingTime}}</text>
+        <text class="timer-label">剩余时间</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 分数 -->
+  <view class="score-container bounce-in">
+    <view class="score-item">
+      <text class="score-value">{{score}}</text>
+      <text class="score-label">得分</text>
+    </view>
+    <view class="score-item">
+      <text class="score-value">{{correctWords.length}}</text>
+      <text class="score-label">正确</text>
+    </view>
+    <view class="score-item">
+      <text class="score-value">{{skippedWords.length}}</text>
+      <text class="score-label">跳过</text>
+    </view>
+  </view>
+  
+  <!-- 当前词语 -->
+  <view class="word-container">
+    <view class="word-card">
+      <view class="current-word">{{currentWord}}</view>
+      <view class="word-arrows">
+        <view class="arrow arrow-left"></view>
+        <view class="arrow arrow-right"></view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 操作区 -->
+  <view class="action-container">
+    <!-- 左侧：猜对 -->
+    <view class="correct-area" hover-class="correct-hover" bindtap="wordCorrect">
+      <view class="action-icon correct-icon"></view>
+      <view class="action-text">正确</view>
+    </view>
+    
+    <!-- 右侧：跳过 -->
+    <view class="skip-area" hover-class="skip-hover" bindtap="wordSkip">
+      <view class="action-icon skip-icon"></view>
+      <view class="action-text">跳过</view>
+    </view>
+  </view>
+  
+  <!-- 暂停蒙层 -->
+  <view class="pause-overlay {{isPaused ? 'fade-in' : 'hidden'}}" wx:if="{{isPaused}}">
+    <view class="pause-card bounce-in">
+      <view class="title">游戏暂停</view>
+      <view class="pause-stats">
+        <view class="pause-stat-item">
+          <text class="pause-stat-value">{{score}}</text>
+          <text class="pause-stat-label">当前得分</text>
+        </view>
+        <view class="pause-stat-item">
+          <text class="pause-stat-value">{{remainingTime}}</text>
+          <text class="pause-stat-label">剩余时间</text>
+        </view>
+      </view>
+      <view class="pause-actions">
+        <view class="btn" hover-class="btn-hover" bindtap="togglePause">继续游戏</view>
+        <view class="btn btn-danger" hover-class="btn-hover" bindtap="exitGame">结束游戏</view>
+      </view>
+    </view>
+  </view>
+</view> 
